@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+    <html lang="it">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Studio Robotico Meluzzi</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnH1zWXf57jRzWxNchbHvB2RFSb/8W7nK4Ac6J3x+6VxNUKjOaZ4QeD1zJOlr5qF3Z7r4C8BQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="shortcut icon" href="IMG_1087-removebg-preview.ico" type="image/x-icon">
+        <style>
+            :root {
+                --blu: #1E3A8A;
+                --argento: #C0C0C0;
+                --bianco: #FFFFFF;
+                --grigio-chiaro: #F5F5F5;
+            }
+
+            body {
+                margin: 0;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background-color: var(--grigio-chiaro);
+                color: var(--blu);
+            }
+
+            header {
+                background-color: var(--blu);
+                color: var(--bianco);
+                padding: 1rem 2rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            header h1 {
+                margin: 0;
+                font-size: 1.8rem;
+            }
+
+            nav {
+                display: flex;
+                align-items: center;
+            }
+
+            nav a {
+                color: var(--bianco);
+                text-decoration: none;
+                margin-left: 1.5rem;
+                font-weight: 500;
+            }
+
+            nav a:hover {
+                text-decoration: underline;
+            }
+
+            .lang-switch {
+                margin-left: 1.5rem;
+                background-color: var(--argento);
+                color: var(--blu);
+                border: none;
+                padding: 0.3rem 0.6rem;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            .hero {
+                background: linear-gradient(to right, var(--blu), var(--argento));
+                color: var(--bianco);
+                text-align: center;
+                padding: 4rem 2rem;
+            }
+
+            .hero h2 {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .section {
+                padding: 3rem 2rem;
+                background-color: var(--bianco);
+            }
+
+            .section h3 {
+                text-align: center;
+                margin-bottom: 2rem;
+                color: var(--blu);
+            }
+
+            .services {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 2rem;
+            }
+
+            .service-card {
+                background-color: var(--grigio-chiaro);
+                border: 1px solid var(--argento);
+                border-radius: 8px;
+                padding: 1.5rem;
+                width: 300px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .service-card h4 {
+                margin-top: 0;
+                color: var(--blu);
+            }
+
+            .contact-form {
+                max-width: 600px;
+                margin: 0 auto;
+                background-color: var(--grigio-chiaro);
+                padding: 2rem;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .contact-form label {
+                display: block;
+                margin-bottom: 0.5rem;
+                color: var(--blu);
+            }
+
+            .contact-form input,
+            .contact-form textarea {
+                width: 100%;
+                padding: 0.5rem;
+                margin-bottom: 1rem;
+                border: 1px solid var(--argento);
+                border-radius: 4px;
+            }
+
+            .contact-form button {
+                background-color: var(--blu);
+                color: var(--bianco);
+                padding: 0.5rem 1rem;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            footer {
+                background-color: var(--blu);
+                color: var(--bianco);
+                text-align: center;
+                padding: 1rem 2rem;
+            }
+
+            footer a {
+                color: var(--argento);
+                text-decoration: none;
+                margin: 0 0.5rem;
+            }
+
+            footer a:hover {
+                text-decoration: underline;
+            }
+
+            @media (max-width: 768px) {
+                .services {
+                    flex-direction: column;
+                    align-items: center;
+                }
+            }
+        </style>
+        <script>
+            function switchLanguage(lang) {
+                document.querySelectorAll('[data-lang-it]').forEach(el => {
+                    el.style.display = lang === 'it' ? 'block' : 'none';
+                });
+                document.querySelectorAll('[data-lang-en]').forEach(el => {
+                    el.style.display = lang === 'en' ? 'block' : 'none';
+                });
+            }
+
+            window.onload = () => {
+                switchLanguage('it');
+            };
+        </script>
+    </head>
+
+    <body>
+
+        <header>
+            <h1>Studio Robotico Meluzzi</h1>
+            <nav>
+                <a href="#chi-siamo">Chi Siamo</a>
+                <a href="#servizi">Servizi</a>
+                <a href="#contatti">Contatti</a>
+                <button class="lang-switch" onclick="switchLanguage('it')">IT</button>
+                <button class="lang-switch" onclick="switchLanguage('en')">EN</button>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <h2 data-lang-it>Innovazione Robotica al Servizio del Futuro</h2>
+            <h2 data-lang-en style="display:none">Robotic Innovation for the Future</h2>
+            <p data-lang-it>Progettiamo e sviluppiamo soluzioni robotiche avanzate per automatizzare e migliorare i
+                processi industriali.</p>
+            <p data-lang-en style="display:none">We design and develop advanced robotic solutions to automate and
+                improve industrial processes.</p>
+        </section>
+
+        <section class="section" id="servizi">
+            <h3 data-lang-it>I Nostri Servizi</h3>
+            <h3 data-lang-en style="display:none">Our Services</h3>
+            <div class="services">
+                <div class="service-card">
+                    <h4 data-lang-it>Progettazione Robotica</h4>
+                    <h4 data-lang-en style="display:none">Robotics Design</h4>
+                    <p data-lang-it>Creiamo robot su misura per le esigenze specifiche dei nostri clienti, garantendo
+                        efficienza e precisione.</p>
+                    <p data-lang-en style="display:none">We create custom robots for specific client needs, ensuring
+                        efficiency and precision.</p>
+                </div>
+                <div class="service-card">
+                    <h4 data-lang-it>Automazione Industriale</h4>
+                    <h4 data-lang-en style="display:none">Industrial Automation</h4>
+                    <p data-lang-it>Implementiamo sistemi automatizzati per ottimizzare la produzione e ridurre i costi
+                        operativi.</p>
+                    <p data-lang-en style="display:none">We implement automated systems to optimize production and
+                        reduce operating costs.</p>
+                </div>
+                <div class="service-card">
+                    <h4 data-lang-it>Manutenzione e Supporto</h4>
+                    <h4 data-lang-en style="display:none">Maintenance & Support</h4>
+                    <p data-lang-it>Offriamo servizi di manutenzione preventiva e supporto tecnico per garantire la
+                        continuità operativa.</p>
+                    <p data-lang-en style="display:none">We offer preventive maintenance and technical support services
+                        to ensure operational continuity.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contatti" class="section">
+            <h3 data-lang-it>Contattaci</h3>
+            <h3 data-lang-en style="display:none">Contact Us</h3>
+            <form class="contact-form" action="mailto:info@studiorobotico.it" method="post" enctype="text/plain">
+                <label data-lang-it for="nome">Nome</label>
+                <label data-lang-en for="nome" style="display:none">Name</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label data-lang-it for="email">Email</label>
+                <label data-lang-en for="email" style="display:none">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label data-lang-it for="messaggio">Messaggio</label>
+                <label data-lang-en for="messaggio" style="display:none">Message</label>
+                <textarea id="messaggio" name="messaggio" rows="5" required></textarea>
+
+                <button type="submit" data-lang-it>Invia</button>
+                <button type="submit" data-lang-en style="display:none">Send</button>
+            </form>
+        </section>
+
+        <section id="privacy" class="section">
+            <h3 data-lang-it>Privacy Policy</h3>
+            <h3 data-lang-en style="display:none">Privacy Policy</h3>
+            <p data-lang-it>Questo sito non raccoglie direttamente dati personali degli utenti. Tuttavia, potrebbero
+                essere presenti strumenti di terze parti (es. Google Fonts, hosting provider) che raccolgono dati in
+                forma anonima per finalità tecniche.</p>
+            <p data-lang-en style="display:none">This site does not directly collect users' personal data. However,
+                third-party tools (e.g., Google Fonts, hosting providers) may collect anonymous technical data.</p>
+            <p data-lang-it>In caso di contatti volontari via email o form, i dati forniti saranno trattati solo per
+                rispondere alla richiesta e non saranno condivisi con terzi.</p>
+            <p data-lang-en style="display:none">If you contact us voluntarily via email or form, the data will only be
+                used to respond and will not be shared with third parties.</p>
+            <p>Per ogni informazione, puoi scrivere a: <a
+                    href="mailto:studioroboticomeluzzi@gmail.com">studioroboticomeluzzi@gmail.com</a></p>
+        </section>
+
+        <section id="termini" class="section">
+            <h3 data-lang-it>Termini di Utilizzo</h3>
+            <h3 data-lang-en style="display:none">Terms of Use</h3>
+            <p data-lang-it>I contenuti presenti su questo sito, inclusi testi, immagini e codice, sono di proprietà di
+                Studio Robotico Meluzzi, salvo ove diversamente specificato.</p>
+            <p data-lang-en style="display:none">The content on this site, including texts, images, and code, is the
+                property of Studio Robotico Meluzzi, unless otherwise specified.</p>
+            <p data-lang-it>È vietata la riproduzione, la copia o la distribuzione dei contenuti senza autorizzazione
+                scritta.</p>
+            <p data-lang-en style="display:none">Reproduction, copying, or distribution of content without written
+                permission is prohibited.</p>
+            <p data-lang-it>Studio Robotico Meluzzi si riserva il diritto di modificare in qualsiasi momento i contenuti
+                del sito e non garantisce che tutte le informazioni siano sempre aggiornate.</p>
+            <p data-lang-en style="display:none">Studio Robotico Meluzzi reserves the right to modify the site content
+                at any time and does not guarantee that all information is always up-to-date.</p>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Studio Robotico Meluzzi. Tutti i diritti riservati.</p>
+            <p><a href="#privacy">Privacy</a> | <a href="#termini">Termini</a></p>
+        </footer>
+
+    </body>
+
+    </html>
