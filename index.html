@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Studio Robotico Meluzzi</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="shortcut icon" href="IMG_1087-removebg-preview.ico" type="image/x-icon">
     <style>
         :root {
             --blu: #1E3A8A;
@@ -162,6 +161,25 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0,0,0,0.15);
         }
+
+        .lang-switch.active {
+            background: linear-gradient(135deg, #ffffff 0%, var(--argento) 100%);
+            font-weight: 800;
+        }
+
+        /* Language-specific display classes */
+        .lang-it { display: none; }
+        .lang-en { display: none; }
+        
+        /* Show Italian by default */
+        body.lang-it .lang-it { display: block; }
+        body.lang-it .lang-it.inline { display: inline; }
+        body.lang-it .lang-it.inline-block { display: inline-block; }
+        
+        /* Show English when switched */
+        body.lang-en .lang-en { display: block; }
+        body.lang-en .lang-en.inline { display: inline; }
+        body.lang-en .lang-en.inline-block { display: inline-block; }
 
         /* Revolutionary Hero Section */
         .hero {
@@ -547,7 +565,7 @@
         }
     </style>
 </head>
-<body>
+<body class="lang-it">
     <!-- Animated Background -->
     <div class="bg-animation" id="bgAnimation"></div>
 
@@ -557,22 +575,25 @@
             Studio Robotico Meluzzi
         </h1>
         <nav>
-            <a href="#chi-siamo">Chi Siamo</a>
-            <a href="#servizi">Servizi</a>
-            <a href="#contatti">Contatti</a>
-            <button class="lang-switch" onclick="switchLanguage('it')">IT</button>
-            <button class="lang-switch" onclick="switchLanguage('en')">EN</button>
+            <a href="#chi-siamo" class="lang-it">Chi Siamo</a>
+            <a href="#about" class="lang-en">About Us</a>
+            <a href="#servizi" class="lang-it">Servizi</a>
+            <a href="#services" class="lang-en">Services</a>
+            <a href="#contatti" class="lang-it">Contatti</a>
+            <a href="#contact" class="lang-en">Contact</a>
+            <button class="lang-switch active" onclick="switchLanguage('it')" id="btn-it">IT</button>
+            <button class="lang-switch" onclick="switchLanguage('en')" id="btn-en">EN</button>
         </nav>
     </header>
 
     <section class="hero">
         <div class="hero-content">
-            <h2 data-lang-it>Innovazione Robotica al Servizio del Futuro</h2>
-            <h2 data-lang-en style="display:none">Robotic Innovation for the Future</h2>
-            <p data-lang-it>Progettiamo e sviluppiamo soluzioni robotiche avanzate per automatizzare e migliorare i processi industriali.</p>
-            <p data-lang-en style="display:none">We design and develop advanced robotic solutions to automate and improve industrial processes.</p>
-            <a href="#servizi" class="cta-button" data-lang-it>Scopri i Nostri Servizi</a>
-            <a href="#servizi" class="cta-button" data-lang-en style="display:none">Discover Our Services</a>
+            <h2 class="lang-it">Innovazione Robotica al Servizio del Futuro</h2>
+            <h2 class="lang-en">Robotic Innovation for the Future</h2>
+            <p class="lang-it">Progettiamo e sviluppiamo soluzioni robotiche avanzate per automatizzare e migliorare i processi industriali.</p>
+            <p class="lang-en">We design and develop advanced robotic solutions to automate and improve industrial processes.</p>
+            <a href="#servizi" class="cta-button lang-it inline-block">Scopri i Nostri Servizi</a>
+            <a href="#servizi" class="cta-button lang-en inline-block">Discover Our Services</a>
         </div>
         <div class="robot-showcase">
             <i class="fas fa-robot"></i>
@@ -580,101 +601,118 @@
     </section>
 
     <section class="section scroll-reveal" id="servizi">
-        <h3 data-lang-it>I Nostri Servizi</h3>
-        <h3 data-lang-en style="display:none">Our Services</h3>
+        <h3 class="lang-it">I Nostri Servizi</h3>
+        <h3 class="lang-en">Our Services</h3>
         <div class="services">
             <div class="service-card scroll-reveal">
                 <div class="service-icon">
                     <i class="fas fa-drafting-compass"></i>
                 </div>
-                <h4 data-lang-it>Progettazione Robotica</h4>
-                <h4 data-lang-en style="display:none">Robotics Design</h4>
-                <p data-lang-it>Creiamo robot su misura per le esigenze specifiche dei nostri clienti, garantendo efficienza e precisione.</p>
-                <p data-lang-en style="display:none">We create custom robots for specific client needs, ensuring efficiency and precision.</p>
+                <h4 class="lang-it">Progettazione Robotica</h4>
+                <h4 class="lang-en">Robotics Design</h4>
+                <p class="lang-it">Creiamo robot su misura per le esigenze specifiche dei nostri clienti, garantendo efficienza e precisione.</p>
+                <p class="lang-en">We create custom robots for specific client needs, ensuring efficiency and precision.</p>
             </div>
             <div class="service-card scroll-reveal">
                 <div class="service-icon">
                     <i class="fas fa-cogs"></i>
                 </div>
-                <h4 data-lang-it>Automazione Industriale</h4>
-                <h4 data-lang-en style="display:none">Industrial Automation</h4>
-                <p data-lang-it">Implementiamo sistemi automatizzati per ottimizzare la produzione e ridurre i costi operativi.</p>
-                <p data-lang-en style="display:none">We implement automated systems to optimize production and reduce operating costs.</p>
+                <h4 class="lang-it">Automazione Industriale</h4>
+                <h4 class="lang-en">Industrial Automation</h4>
+                <p class="lang-it">Implementiamo sistemi automatizzati per ottimizzare la produzione e ridurre i costi operativi.</p>
+                <p class="lang-en">We implement automated systems to optimize production and reduce operating costs.</p>
             </div>
             <div class="service-card scroll-reveal">
                 <div class="service-icon">
                     <i class="fas fa-tools"></i>
                 </div>
-                <h4 data-lang-it>Manutenzione e Supporto</h4>
-                <h4 data-lang-en style="display:none">Maintenance & Support</h4>
-                <p data-lang-it">Offriamo servizi di manutenzione preventiva e supporto tecnico per garantire la continuità operativa.</p>
-                <p data-lang-en style="display:none">We offer preventive maintenance and technical support services to ensure operational continuity.</p>
+                <h4 class="lang-it">Manutenzione e Supporto</h4>
+                <h4 class="lang-en">Maintenance & Support</h4>
+                <p class="lang-it">Offriamo servizi di manutenzione preventiva e supporto tecnico per garantire la continuità operativa.</p>
+                <p class="lang-en">We offer preventive maintenance and technical support services to ensure operational continuity.</p>
             </div>
         </div>
     </section>
 
     <section id="contatti" class="section contact-section scroll-reveal">
-        <h3 data-lang-it>Contattaci</h3>
-        <h3 data-lang-en style="display:none">Contact Us</h3>
+        <h3 class="lang-it">Contattaci</h3>
+        <h3 class="lang-en">Contact Us</h3>
         <form class="contact-form" action="mailto:studioroboticomeluzzi@gmail.com" method="post" enctype="text/plain">
             <div class="form-group">
-                <label data-lang-it for="nome">Nome</label>
-                <label data-lang-en for="nome" style="display:none">Name</label>
+                <label for="nome" class="lang-it">Nome</label>
+                <label for="nome" class="lang-en">Name</label>
                 <input type="text" id="nome" name="nome" required>
             </div>
 
             <div class="form-group">
-                <label data-lang-it for="email">Email</label>
-                <label data-lang-en for="email" style="display:none">Email</label>
+                <label for="email" class="lang-it">Email</label>
+                <label for="email" class="lang-en">Email</label>
                 <input type="email" id="email" name="email" required>
             </div>
 
             <div class="form-group">
-                <label data-lang-it for="messaggio">Messaggio</label>
-                <label data-lang-en for="messaggio" style="display:none">Message</label>
+                <label for="messaggio" class="lang-it">Messaggio</label>
+                <label for="messaggio" class="lang-en">Message</label>
                 <textarea id="messaggio" name="messaggio" rows="5" required></textarea>
             </div>
 
-            <button type="submit" data-lang-it>Invia Messaggio</button>
-            <button type="submit" data-lang-en style="display:none">Send Message</button>
+            <button type="submit" class="lang-it">Invia Messaggio</button>
+            <button type="submit" class="lang-en">Send Message</button>
         </form>
     </section>
 
     <section id="privacy" class="section scroll-reveal">
-        <h3 data-lang-it>Privacy Policy</h3>
-        <h3 data-lang-en style="display:none">Privacy Policy</h3>
-        <p data-lang-it>Questo sito non raccoglie direttamente dati personali degli utenti. Tuttavia, potrebbero essere presenti strumenti di terze parti (es. Google Fonts, hosting provider) che raccolgono dati in forma anonima per finalità tecniche.</p>
-        <p data-lang-en style="display:none">This site does not directly collect users' personal data. However, third-party tools (e.g., Google Fonts, hosting providers) may collect anonymous technical data.</p>
-        <p data-lang-it>In caso di contatti volontari via email o form, i dati forniti saranno trattati solo per rispondere alla richiesta e non saranno condivisi con terzi.</p>
-        <p data-lang-en style="display:none">If you contact us voluntarily via email or form, the data will only be used to respond and will not be shared with third parties.</p>
-        <p>Per ogni informazione, puoi scrivere a: <a href="mailto:studioroboticomeluzzi@gmail.com">studioroboticomeluzzi@gmail.com</a></p>
+        <h3 class="lang-it">Privacy Policy</h3>
+        <h3 class="lang-en">Privacy Policy</h3>
+        <p class="lang-it">Questo sito non raccoglie direttamente dati personali degli utenti. Tuttavia, potrebbero essere presenti strumenti di terze parti (es. Google Fonts, hosting provider) che raccolgono dati in forma anonima per finalità tecniche.</p>
+        <p class="lang-en">This site does not directly collect users' personal data. However, third-party tools (e.g., Google Fonts, hosting providers) may collect anonymous technical data.</p>
+        
+        <p class="lang-it">In caso di contatti volontari via email o form, i dati forniti saranno trattati solo per rispondere alla richiesta e non saranno condivisi con terzi.</p>
+        <p class="lang-en">If you contact us voluntarily via email or form, the data will only be used to respond and will not be shared with third parties.</p>
+        
+        <p class="lang-it">Per ogni informazione, puoi scrivere a: <a href="mailto:studioroboticomeluzzi@gmail.com">studioroboticomeluzzi@gmail.com</a></p>
+        <p class="lang-en">For any information, you can write to: <a href="mailto:studioroboticomeluzzi@gmail.com">studioroboticomeluzzi@gmail.com</a></p>
     </section>
 
     <section id="termini" class="section scroll-reveal">
-        <h3 data-lang-it>Termini di Utilizzo</h3>
-        <h3 data-lang-en style="display:none">Terms of Use</h3>
-        <p data-lang-it>I contenuti presenti su questo sito, inclusi testi, immagini e codice, sono di proprietà di Studio Robotico Meluzzi, salvo ove diversamente specificato.</p>
-        <p data-lang-en style="display:none">The content on this site, including texts, images, and code, is the property of Studio Robotico Meluzzi, unless otherwise specified.</p>
-        <p data-lang-it>È vietata la riproduzione, la copia o la distribuzione dei contenuti senza autorizzazione scritta.</p>
-        <p data-lang-en style="display:none">Reproduction, copying, or distribution of content without written permission is prohibited.</p>
-        <p data-lang-it>Studio Robotico Meluzzi si riserva il diritto di modificare in qualsiasi momento i contenuti del sito e non garantisce che tutte le informazioni siano sempre aggiornate.</p>
-        <p data-lang-en style="display:none">Studio Robotico Meluzzi reserves the right to modify the site content at any time and does not guarantee that all information is always up-to-date.</p>
+        <h3 class="lang-it">Termini di Utilizzo</h3>
+        <h3 class="lang-en">Terms of Use</h3>
+        <p class="lang-it">I contenuti presenti su questo sito, inclusi testi, immagini e codice, sono di proprietà di Studio Robotico Meluzzi, salvo ove diversamente specificato.</p>
+        <p class="lang-en">The content on this site, including texts, images, and code, is the property of Studio Robotico Meluzzi, unless otherwise specified.</p>
+        
+        <p class="lang-it">È vietata la riproduzione, la copia o la distribuzione dei contenuti senza autorizzazione scritta.</p>
+        <p class="lang-en">Reproduction, copying, or distribution of content without written permission is prohibited.</p>
+        
+        <p class="lang-it">Studio Robotico Meluzzi si riserva il diritto di modificare in qualsiasi momento i contenuti del sito e non garantisce che tutte le informazioni siano sempre aggiornate.</p>
+        <p class="lang-en">Studio Robotico Meluzzi reserves the right to modify the site content at any time and does not guarantee that all information is always up-to-date.</p>
     </section>
 
     <footer>
-        <p>&copy; 2025 Studio Robotico Meluzzi. Tutti i diritti riservati.</p>
-        <p><a href="#privacy">Privacy</a> | <a href="#termini">Termini</a></p>
+        <p class="lang-it">&copy; 2025 Studio Robotico Meluzzi. Tutti i diritti riservati.</p>
+        <p class="lang-en">&copy; 2025 Studio Robotico Meluzzi. All rights reserved.</p>
+        <p>
+            <a href="#privacy" class="lang-it inline">Privacy</a>
+            <a href="#privacy" class="lang-en inline">Privacy</a>
+            |
+            <a href="#termini" class="lang-it inline">Termini</a>
+            <a href="#termini" class="lang-en inline">Terms</a>
+        </p>
     </footer>
 
     <script>
-        // Language switching
+        // Fixed language switching function
         function switchLanguage(lang) {
-            document.querySelectorAll('[data-lang-it]').forEach(el => {
-                el.style.display = lang === 'it' ? (el.tagName === 'BUTTON' ? 'inline-block' : 'block') : 'none';
-            });
-            document.querySelectorAll('[data-lang-en]').forEach(el => {
-                el.style.display = lang === 'en' ? (el.tagName === 'BUTTON' ? 'inline-block' : 'block') : 'none';
-            });
+            // Remove current language class
+            document.body.classList.remove('lang-it', 'lang-en');
+            // Add new language class
+            document.body.classList.add(`lang-${lang}`);
+            
+            // Update button states
+            document.getElementById('btn-it').classList.toggle('active', lang === 'it');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            
+            // Update document language attribute
+            document.documentElement.lang = lang;
         }
 
         // Animated background particles
@@ -725,7 +763,6 @@
 
         // Initialize everything
         window.addEventListener('DOMContentLoaded', () => {
-            switchLanguage('it');
             createParticles();
             handleScrollReveal();
             
@@ -742,11 +779,9 @@
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
-                header.style.backdropFilter = 'blur(15px)';
-                header.style.background = 'linear-gradient(135deg, rgba(30, 58, 138, 0.95) 0%, rgba(37, 99, 235, 0.95) 100%)';
+                header.style.backgroundColor = 'rgba(30, 58, 138, 0.95)';
             } else {
-                header.style.backdropFilter = 'blur(10px)';
-                header.style.background = 'linear-gradient(135deg, var(--blu) 0%, #2563eb 100%)';
+                header.style.backgroundColor = '';
             }
         });
     </script>
