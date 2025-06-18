@@ -104,19 +104,17 @@
             flex-wrap: wrap;
         }
 
-        .logo-icon {
+        /* New icon styling for the header */
+        .header-icon {
             display: inline-block;
             margin-right: 10px;
-            animation: rotate 6s linear infinite;
             font-size: 1.2em;
+            color: var(--argento); /* Adjust color if needed */
+            transition: transform 0.3s ease;
         }
 
-        @keyframes rotate {
-            0% { transform: rotate(0deg) scale(1); }
-            25% { transform: rotate(90deg) scale(1.1); }
-            50% { transform: rotate(180deg) scale(1); }
-            75% { transform: rotate(270deg) scale(1.1); }
-            100% { transform: rotate(360deg) scale(1); }
+        header h1:hover .header-icon {
+            transform: scale(1.1); /* Small hover effect */
         }
 
         /* Mobile Menu Toggle */
@@ -301,6 +299,25 @@
         .cta-button:hover {
             transform: translateY(-5px) scale(1.05);
             box-shadow: var(--shadow-hover);
+        }
+
+        /* Robot Showcase in Hero */
+        .robot-showcase {
+            position: absolute;
+            bottom: 20px; /* Adjust as needed */
+            right: 20px; /* Adjust as needed */
+            font-size: clamp(4rem, 10vw, 8rem); /* Make it large */
+            color: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+            z-index: 1; /* Below content */
+            pointer-events: none; /* Make it unclickable */
+            animation: floatRobot 8s ease-in-out infinite; /* Floating animation */
+            filter: drop-shadow(0 0 10px rgba(0,0,0,0.5)); /* Add a subtle shadow */
+        }
+
+        @keyframes floatRobot {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0) rotate(0deg); }
         }
 
         /* Enhanced Sections */
@@ -658,7 +675,11 @@
             }
 
             .robot-showcase {
-                display: none; /* Remove robot showcase on smaller screens */
+                /* Make it smaller or adjust position for mobile if needed, or hide completely */
+                font-size: clamp(3rem, 8vw, 6rem); /* Smaller on mobile */
+                bottom: 10px;
+                right: 10px;
+                opacity: 0.1; /* More subtle on small screens */
             }
 
             .services {
@@ -694,6 +715,10 @@
 
             .mobile-nav {
                 width: 85%; /* Make mobile nav wider on very small screens */
+            }
+
+            .robot-showcase {
+                display: none; /* Hide robot showcase on very small screens to avoid clutter */
             }
         }
 
@@ -830,7 +855,7 @@
 
     <header>
         <h1>
-            <span class="logo-icon">🤖</span>
+            <span class="header-icon"><i class="fas fa-microchip"></i></span>
             Studio Robotico Meluzzi
         </h1>
         <button class="mobile-menu-toggle" id="mobileMenuToggle">
@@ -861,7 +886,7 @@
             <a href="#servizi" class="cta-button pulse-animation" data-lang-it>Scopri i Nostri Servizi</a>
             <a href="#servizi" class="cta-button pulse-animation" data-lang-en style="display:none">Discover Our Services</a>
         </div>
-        <div class="robot-showcase" style="display: none;">
+        <div class="robot-showcase">
             <i class="fas fa-robot"></i>
         </div>
     </section>
