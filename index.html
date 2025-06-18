@@ -303,24 +303,6 @@
             box-shadow: var(--shadow-hover);
         }
 
-        /* Interactive Robot Visualization */
-        .robot-showcase {
-            position: absolute;
-            right: 5%;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: clamp(4rem, 10vw, 8rem);
-            opacity: 0.2;
-            animation: robotPulse 4s ease-in-out infinite;
-        }
-
-        @keyframes robotPulse {
-            0%, 100% { transform: translateY(-50%) scale(1) rotate(0deg); }
-            25% { transform: translateY(-60%) scale(1.1) rotate(5deg); }
-            50% { transform: translateY(-40%) scale(1.2) rotate(-5deg); }
-            75% { transform: translateY(-60%) scale(1.1) rotate(5deg); }
-        }
-
         /* Enhanced Sections */
         .section {
             padding: clamp(3rem, 6vw, 5rem) 2rem;
@@ -606,7 +588,7 @@
             .mobile-menu-toggle {
                 display: block; /* Show hamburger on mobile */
             }
-            
+
             nav {
                 display: none; /* Hide desktop nav */
             }
@@ -665,33 +647,29 @@
                 padding: 1rem;
                 min-height: 70px;
             }
-            
+
             header h1 {
                 font-size: 1.3rem;
             }
-            
+
             .hero {
                 padding: 4rem 1rem;
                 min-height: 60vh;
             }
-            
+
             .robot-showcase {
-                position: static;
-                transform: none;
-                font-size: 4rem;
-                margin-top: 2rem;
-                opacity: 0.3;
+                display: none; /* Remove robot showcase on smaller screens */
             }
-            
+
             .services {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
-            
+
             .service-card {
                 padding: 2rem;
             }
-            
+
             .section {
                 margin: 1rem;
                 border-radius: 15px;
@@ -702,13 +680,13 @@
             .hero {
                 padding: 3rem 1rem;
             }
-            
+
             .cta-button {
                 padding: 1rem 2rem;
                 width: 90%;
                 max-width: none;
             }
-            
+
             .contact-form {
                 margin: 0 1rem;
                 padding: 1.5rem;
@@ -811,6 +789,36 @@
                 --argento: #808080;
             }
         }
+
+        /* Chi Siamo Section Graphic */
+        #chi-siamo {
+            background-image: url('http://googleusercontent.com/image_generation_content/0'); /* Using the generated image URL */
+            background-size: cover;
+            background-position: center;
+            color: var(--bianco); /* Ensure text is readable */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Improve text visibility */
+        }
+
+        #chi-siamo h3,
+        #chi-siamo p {
+            text-align: left; /* Adjust text alignment for better readability */
+            padding: 1rem; /* Add padding for better spacing */
+            max-width: 800px; /* Limit text width for readability */
+            margin: 0 auto; /* Center the text block */
+            position: relative; /* Needed for the overlay */
+            z-index: 2; /* Ensure text is above overlay */
+        }
+
+        #chi-siamo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(30, 58, 138, 0.7); /* Dark overlay for better text contrast */
+            z-index: 1; /* Place overlay below text */
+        }
     </style>
 </head>
 <body>
@@ -853,7 +861,7 @@
             <a href="#servizi" class="cta-button pulse-animation" data-lang-it>Scopri i Nostri Servizi</a>
             <a href="#servizi" class="cta-button pulse-animation" data-lang-en style="display:none">Discover Our Services</a>
         </div>
-        <div class="robot-showcase">
+        <div class="robot-showcase" style="display: none;">
             <i class="fas fa-robot"></i>
         </div>
     </section>
