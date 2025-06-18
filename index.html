@@ -931,21 +931,10 @@
         // Language switching
         function switchLanguage(lang) {
             document.querySelectorAll('[data-lang-it]').forEach(el => {
-                el.style.display = lang === 'it' ? (el.tagName === 'BUTTON' ? 'inline-block' : 'block') : 'none';
+                el.style.display = lang === 'it' ? (el.tagName === 'BUTTON' || el.tagName === 'A' ? 'inline-block' : 'block') : 'none';
             });
             document.querySelectorAll('[data-lang-en]').forEach(el => {
-                el.style.display = lang === 'en' ? (el.tagName === 'BUTTON' ? 'inline-block' : 'block') : 'none';
-            });
-            // Ensure the CTA button displays correctly based on language
-            const ctaButtons = document.querySelectorAll('.cta-button');
-            ctaButtons.forEach(btn => {
-                if (btn.hasAttribute('data-lang-it') && lang === 'it') {
-                    btn.style.display = 'inline-block';
-                } else if (btn.hasAttribute('data-lang-en') && lang === 'en') {
-                    btn.style.display = 'inline-block';
-                } else {
-                    btn.style.display = 'none';
-                }
+                el.style.display = lang === 'en' ? (el.tagName === 'BUTTON' || el.tagName === 'A' ? 'inline-block' : 'block') : 'none';
             });
         }
 
