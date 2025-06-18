@@ -121,13 +121,13 @@
 
         /* Mobile Menu Toggle */
         .mobile-menu-toggle {
-            display: none;
+            display: none; /* Hidden on desktop */
             background: none;
             border: none;
             color: var(--bianco);
             font-size: 1.5rem;
             cursor: pointer;
-            z-index: 3;
+            z-index: 1001; /* Above mobile nav */
             transition: transform 0.3s ease;
         }
 
@@ -604,38 +604,58 @@
         /* Mobile Navigation */
         @media (max-width: 968px) {
             .mobile-menu-toggle {
-                display: block;
+                display: block; /* Show hamburger on mobile */
             }
             
             nav {
+                display: none; /* Hide desktop nav */
+            }
+
+            .mobile-nav {
                 position: fixed;
-                top: 80px;
-                left: 0;
-                right: 0;
+                top: 0;
+                right: -100%; /* Start off-screen */
+                width: 70%;
+                max-width: 300px;
+                height: 100%;
                 background: var(--gradient-primary);
                 flex-direction: column;
-                padding: 2rem;
-                transform: translateY(-100%);
-                transition: transform 0.3s ease;
-                box-shadow: var(--shadow);
-                z-index: 999;
+                padding: 4rem 2rem; /* More padding for mobile */
+                box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+                z-index: 1000;
+                transition: right 0.3s ease-in-out;
+                justify-content: flex-start; /* Align items to top */
+                align-items: flex-start; /* Align items to left */
+                gap: 1.5rem;
             }
-            
-            nav.mobile-open {
-                transform: translateY(0);
+
+            .mobile-nav.mobile-open {
+                right: 0; /* Slide in */
             }
-            
-            nav a {
-                margin: 0.5rem 0;
-                padding: 1rem;
+
+            .mobile-nav a {
+                color: var(--bianco);
+                text-decoration: none;
+                width: 100%;
+                text-align: left;
+                padding: 1rem 0;
+                margin: 0; /* Remove left margin */
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                border-radius: 0; /* No border-radius for full width links */
+            }
+
+            .mobile-nav a:last-child {
+                border-bottom: none;
+            }
+
+            .mobile-nav a::before {
+                display: none; /* Hide hover underline for mobile */
+            }
+
+            .mobile-nav .lang-switch {
+                margin-top: 1.5rem;
                 width: 100%;
                 text-align: center;
-                border-radius: 10px;
-            }
-            
-            .lang-switch {
-                margin: 0.5rem 0;
-                width: auto;
             }
         }
 
@@ -692,6 +712,10 @@
             .contact-form {
                 margin: 0 1rem;
                 padding: 1.5rem;
+            }
+
+            .mobile-nav {
+                width: 85%; /* Make mobile nav wider on very small screens */
             }
         }
 
@@ -804,7 +828,14 @@
         <button class="mobile-menu-toggle" id="mobileMenuToggle">
             <i class="fas fa-bars"></i>
         </button>
-        <nav id="navigation">
+        <nav id="desktopNavigation">
+            <a href="#chi-siamo">Chi Siamo</a>
+            <a href="#servizi">Servizi</a>
+            <a href="#contatti">Contatti</a>
+            <button class="lang-switch" onclick="switchLanguage('it')">IT</button>
+            <button class="lang-switch" onclick="switchLanguage('en')">EN</button>
+        </nav>
+        <nav class="mobile-nav" id="mobileNavigation">
             <a href="#chi-siamo">Chi Siamo</a>
             <a href="#servizi">Servizi</a>
             <a href="#contatti">Contatti</a>
@@ -980,10 +1011,11 @@
                 const targetSection = document.querySelector(targetId);
                 if (targetSection) {
                     // Close mobile menu if open
-                    const navigation = document.getElementById('navigation');
-                    if (navigation.classList.contains('mobile-open')) {
-                        navigation.classList.remove('mobile-open');
-                        document.getElementById('mobileMenuToggle').innerHTML = '<i class="fas fa-bars"></i>';
+                    const mobileNavigation = document.getElementById('mobileNavigation');
+                    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+                    if (mobileNavigation.classList.contains('mobile-open')) {
+                        mobileNavigation.classList.remove('mobile-open');
+                        mobileMenuToggle.innerHTML = '<i class="fas fa-bars"></i>';
                     }
                     targetSection.scrollIntoView({
                         behavior: 'smooth',
@@ -996,12 +1028,12 @@
         // Mobile menu toggle
         document.addEventListener('DOMContentLoaded', () => {
             const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-            const navigation = document.getElementById('navigation');
+            const mobileNavigation = document.getElementById('mobileNavigation');
 
             if (mobileMenuToggle) {
                 mobileMenuToggle.addEventListener('click', () => {
-                    navigation.classList.toggle('mobile-open');
-                    if (navigation.classList.contains('mobile-open')) {
+                    mobileNavigation.classList.toggle('mobile-open');
+                    if (mobileNavigation.classList.contains('mobile-open')) {
                         mobileMenuToggle.innerHTML = '<i class="fas fa-times"></i>'; // Change to close icon
                     } else {
                         mobileMenuToggle.innerHTML = '<i class="fas fa-bars"></i>'; // Change back to menu icon
@@ -1009,11 +1041,13 @@
                 });
             }
 
-            // Close mobile menu when a nav link is clicked
-            document.querySelectorAll('nav a').forEach(link => {
+            // Close mobile menu when a nav link is clicked (for both desktop and mobile navs)
+            document.querySelectorAll('#desktopNavigation a, #mobileNavigation a').forEach(link => {
                 link.addEventListener('click', () => {
-                    if (navigation.classList.contains('mobile-open')) {
-                        navigation.classList.remove('mobile-open');
+                    const mobileNavigation = document.getElementById('mobileNavigation');
+                    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+                    if (mobileNavigation.classList.contains('mobile-open')) {
+                        mobileNavigation.classList.remove('mobile-open');
                         mobileMenuToggle.innerHTML = '<i class="fas fa-bars"></i>';
                     }
                 });
