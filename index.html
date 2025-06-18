@@ -822,27 +822,20 @@
             background-position: center;
             color: var(--bianco); /* Ensure text is readable */
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Improve text visibility */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         #chi-siamo h3,
         #chi-siamo p {
-            text-align: left; /* Adjust text alignment for better readability */
+            text-align: center; /* Center text within the section */
             padding: 1rem; /* Add padding for better spacing */
             max-width: 800px; /* Limit text width for readability */
             margin: 0 auto; /* Center the text block */
-            position: relative; /* Needed for the overlay */
-            z-index: 2; /* Ensure text is above overlay */
-        }
-
-        #chi-siamo::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(30, 58, 138, 0.7); /* Dark overlay for better text contrast */
-            z-index: 1; /* Place overlay below text */
+            position: relative;
+            z-index: 2; /* Ensure text is above any potential background elements */
         }
     </style>
 </head>
